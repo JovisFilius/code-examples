@@ -1,6 +1,6 @@
-package assignments.pbt;
+package tudelft.pbt;
 
-import assignments.domain.LeapYear;
+import tudelft.domain.LeapYear;
 
 import net.jqwik.api.*;
 import net.jqwik.api.arbitraries.IntegerArbitrary;

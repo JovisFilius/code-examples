@@ -1,6 +1,6 @@
-package assignments.pbt;
+package tudelft.pbt;
 
-import assignments.domain.ATM;
+import tudelft.domain.ATM;
 
 import net.jqwik.api.*;
 

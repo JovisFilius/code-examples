@@ -1,6 +1,6 @@
-package assignments.pbt;
+package tudelft.pbt;
 
-import assignments.domain.MScAdmission;
+import tudelft.domain.MScAdmission;
 
 import net.jqwik.api.*;
 import net.jqwik.api.constraints.Negative;
