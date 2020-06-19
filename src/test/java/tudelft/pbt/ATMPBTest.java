@@ -3,6 +3,8 @@ package tudelft.pbt;
 import tudelft.domain.ATM;
 
 import net.jqwik.api.*;
+import net.jqwik.api.constraints.Negative;
+import net.jqwik.api.constraints.IntRange;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -19,32 +21,19 @@ public class ATMPBTest {
         }
 
         @Property
-        void tooSmallTest(@ForAll("tooSmallAmounts") int amount){
+        void tooSmallTest(@ForAll @IntRange(min = 0, max = 19) int amount){
                 assertAtmThrowsIllegalArgumentException(amount);
-        }
-        @Provide
-        Arbitrary<Integer> tooSmallAmounts(){
-                return Arbitraries.integers().greaterOrEqual(0)
-                        .filter(k -> k < 20);
         }
 
         @Property
-        void negativeTest(@ForAll("negativeAmounts") int amount){
+        void negativeTest(@ForAll @Negative int amount){
                 assertAtmThrowsIllegalArgumentException(amount);
         }
         @Provide
-        Arbitrary<Integer> negativeAmounts(){
-                return Arbitraries.integers().lessOrEqual(-1);
-        }
 
         @Property
-        void tooLargeTest(@ForAll("tooLargeAmounts") int amount){
+        void tooLargeTest(@ForAll @IntRange(min = 201) int amount){
                 assertAtmThrowsIllegalArgumentException(amount);
-        }
-        @Provide
-        Arbitrary<Integer> tooLargeAmounts(){
-                return Arbitraries.integers().greaterOrEqual(0)
-                        .filter(k -> k > 200);
         }
 
         @Property
